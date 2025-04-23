@@ -8,6 +8,7 @@ export const Tabs = ({ tabs, activeTab, activeTabId, setActiveTabId }) => {
           {tabs.map(tab => {
             return (
               <li
+                key={tab.id}
                 className={classNames({ 'is-active': activeTabId === tab.id })}
                 data-cy="Tab"
               >

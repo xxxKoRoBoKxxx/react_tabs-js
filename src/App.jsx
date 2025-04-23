@@ -14,7 +14,14 @@ export const tabs = [
 export const App = () => {
   const [activeTabId, setActiveTabId] = useState('tab-1');
 
-  const activeTab = tabs.filter(tab => tab.id === activeTabId)[0];
+  const validIds = tabs.map(tab => tab.id);
+  let activeTabIdCopy = activeTabId;
+
+  if (!validIds.includes(activeTabIdCopy)) {
+    activeTabIdCopy = 'tab-1';
+  }
+
+  const activeTab = tabs.filter(tab => tab.id === activeTabIdCopy)[0];
 
   return (
     <div className="section">
@@ -22,7 +29,7 @@ export const App = () => {
       <Tabs
         tabs={tabs}
         activeTab={activeTab}
-        activeTabId={activeTabId}
+        activeTabId={activeTabIdCopy}
         setActiveTabId={setActiveTabId}
       />
     </div>
