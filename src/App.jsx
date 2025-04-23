@@ -12,16 +12,19 @@ export const tabs = [
 ];
 
 export const App = () => {
-  const [activeTabId, setActiveTabId] = useState('');
+  const [activeTabId, setActiveTabId] = useState('tab-1');
+
+  const activeTab = tabs.filter(tab => tab.id === activeTabId)[0];
 
   return (
     <div className="section">
-      <h1 className="title">Selected tab is Tab 1</h1>
+      <h1 className="title">Selected tab is {activeTab.title}</h1>
       <Tabs
         tabs={tabs}
+        activeTab={activeTab}
         activeTabId={activeTabId}
         setActiveTabId={setActiveTabId}
       />
     </div>
   );
-}
+};
